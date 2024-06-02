@@ -18,8 +18,8 @@ const day3 = document.querySelector(".day3");
 const day4 = document.querySelector(".day4");
 
 async function weather(placesearch){
-
-  const key = ``;
+try {
+  const key = `f7eade2ea4d1af0647c732b96b32a314`;
   const data = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${placesearch}&appid=${key}`
   ).then((res) => res.json());
@@ -32,21 +32,22 @@ async function weather(placesearch){
   let today = new Date().getHours();
   // console.log(today);
   let data1 = data.list;
+  
   for (let i = 0; i < data1.length; i++) {
     let founddate = new Date(data.list[i].dt_txt).getHours();
 
-    if (founddate <= today && today - founddate <= 2) {
+    if (founddate <= today && today - founddate <= 2.9) {
       // console.log(founddate);
       // console.log(today);
       results.push(data1[i]);
     }
   }
   // console.log(results);
-  const temp = results[0].main.temp_max - 273;
-  const temp1 = results[1].main.temp_max - 273;
-  const temp2 = results[2].main.temp_max - 273;
-  const temp3 = results[3].main.temp_max - 273;
-  const temp4 = results[4].main.temp_max - 273;
+  const temp = results[0].main.temp - 273;
+  const temp1 = results[1].main.temp - 273;
+  const temp2 = results[2].main.temp - 273;
+  const temp3 = results[3].main.temp - 273;
+  const temp4 = results[4].main.temp - 273;
 
   const date1 = new Date(results[1].dt * 1000).toLocaleString("en-US", {
     weekday: "long",
@@ -79,7 +80,9 @@ async function weather(placesearch){
   day3.textContent = date3;
   day4.textContent = date4;
 
-}
+}catch(err){
+  alert(`there is an error on network connection${err}`)
+}}
 
 weather("nyahururu")
 
@@ -87,4 +90,5 @@ submit.addEventListener("click", async function () {
   placesearch = placeinput.value;
   
   weather(placesearch)
+
 });
