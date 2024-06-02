@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(./assets/clounds.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 330px;
+  width: 700px;
+  box-shadow: 0px 0px 10px rgb(31, 6, 6);
+  border-radius: 20px;
+}
+
+.todayinfo {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  justify-content: flex-start;
+}
+input {
+  margin: 20px;
+  width: 300px;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 30px;
+}
+.image {
+  width: 230px;
+  margin: 20px;
+}
+.Tinfo {
+  margin: 15px;
+}
+.todayinfo img {
+  height: 150px;
+  width: 150px;
+}
+.nextdayinfo {
+  display: flex;
+  flex-direction: row;
+}
+.tomorrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgb(31, 6, 6);
+  border-radius: 20px;
+  height: 160px;
+  width: 150px;
+  margin: 10px;
+}
+.tomorrow img {
+  height: 70px;
+  width: 70px;
+}
+.tomorrow h2 {
+  font-size: 25px;
+}
+.tomorrow p {
+  font-size: 25px;
+}
