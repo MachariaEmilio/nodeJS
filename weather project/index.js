@@ -19,7 +19,7 @@ const day4 = document.querySelector(".day4");
 
 async function weather(placesearch){
 try {
-  const key = `f7eade2ea4d1af0647c732b96b32a314`;
+  const key = ``;
   const data = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${placesearch}&appid=${key}`
   ).then((res) => res.json());
