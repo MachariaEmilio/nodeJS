@@ -19,7 +19,7 @@ const day4 = document.querySelector(".day4");
 
 async function weather(placesearch){
 try {
-  const key = ``;
+  const key = "f7eade2ea4d1ggaf0647c732b96b32a314";
   const data = await fetch(
     `https://api.openweathermap.org/data/2.5/forecast?q=${placesearch}&appid=${key}`
   ).then((res) => res.json());
@@ -81,7 +81,7 @@ try {
   day4.textContent = date4;
 
 }catch(err){
-  alert(`there is an error on network connection${err}`)
+  alert(`there is an error ${err}`)
 }}
 
 weather("nyahururu")
