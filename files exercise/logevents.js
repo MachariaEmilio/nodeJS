@@ -3,14 +3,13 @@ const {format}= require("date-fns")
 const path =require("path")
 const fs=require("fs")
 const { log } = require("console")
+
 const fspromise =require("fs").promises
 
-
-
-async function logevents(){
+  const logevents= async(messages)=>{
     const uuid=uuidv4()
     const datetime=format(new Date(),'yyyy-MM-dd\tHH:mm:ss') 
-    const message="this is the logitems"
+    const message=messages
     
    const logitems ={newuuid:uuid,date:datetime,message:message}
       console.log(logitems)
@@ -25,7 +24,7 @@ if (!fs.existsSync(path.join(__dirname,"logs"))) {
   }
   
   if (fs.existsSync(path.join(__dirname,"logs"))) {
-      fs.appendFile(path.join(__dirname,"logs","eventlogs.txt"),JSON.stringify(logitems), function (err) {
+      fs.appendFile(path.join(__dirname,"logs","eventlogs.txt"),`${JSON.stringify(logitems)}\n`, function (err) {
           if (err) throw err;
           console.log('Saved!');
         });
@@ -34,7 +33,8 @@ if (!fs.existsSync(path.join(__dirname,"logs"))) {
 
   }
 }
-logevents()
 
-module.exports={logevents}
+
+exports.logger={logevents}
+// module.exports={logevents}
 
