@@ -24,7 +24,7 @@ app.get("/events/:id", (req, res) => {
   const parsedId = parseInt(id);
   if (isNaN(parsedId)) return res.sendStatus(400);
 
-  const findUserId = readData.find((user) => {
+  const findUserId = readData.findIndex((user) => {
     return user.id === parsedId;
   });
 
