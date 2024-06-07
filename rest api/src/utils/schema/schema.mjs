@@ -1,4 +1,4 @@
-export const valid_schema = {
+export const key_schema = {
     imageUrl: {
       notEmpty: {
         errorMessage: "fill in the imageUrl",

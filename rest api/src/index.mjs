@@ -1,4 +1,4 @@
-import route from "../routes/routes.mjs";
+import route from "../src/routes/routes.mjs";
 import express from "express";
 
 const app = express();

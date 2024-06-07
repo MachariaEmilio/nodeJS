@@ -8,9 +8,9 @@ importers:
 
   .:
     dependencies:
-      env:
-        specifier: ^0.0.2
-        version: 0.0.2
+      body-parser:
+        specifier: ^1.20.2
+        version: 1.20.2
       express:
         specifier: ^4.19.2
         version: 4.19.2
@@ -117,10 +117,6 @@ packages:
   encodeurl@1.0.2:
     resolution: {integrity: sha512-TPJXq8JqFaVYm2CWmPvnP2Iyo4ZSM7/QKcSmuMLDObfpH5fi7RUGmd/rTDf+rut/saiDiQEeVTNgAmJEdAOx0w==}
     engines: {node: '>= 0.8'}
-
-  env@0.0.2:
-    resolution: {integrity: sha512-yP8LfjO4ughSHD/3HgLPinWzexmaOGvRfs2TFx0SZhOm7j1xPi9evjuGcLiNVHIGLmcsgMak4eDbBzlYqGIVxw==}
-    engines: {node: '>= 0.5.9'}
 
   es-define-property@1.0.0:
     resolution: {integrity: sha512-jxayLKShrEqqzJ0eumQbVhTYQM27CfT1T35+gCgDFoL82JLsXqTJ76zv6A0YLOgEnLUMvLzsDsGIrl8NFpT2gQ==}
@@ -504,8 +500,6 @@ snapshots:
   ee-first@1.1.1: {}
 
   encodeurl@1.0.2: {}
-
-  env@0.0.2: {}
 
   es-define-property@1.0.0:
     dependencies:
