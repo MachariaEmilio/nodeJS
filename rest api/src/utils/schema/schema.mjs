@@ -1,39 +1,39 @@
 export const key_schema = {
     imageUrl: {
-      notEmpty: {
+      isEmpty: {
         errorMessage: "fill in the imageUrl",
       },
       isLength: {
-          options : {min :10,max: 30},
-          errorMessage: "Url should not be greater than 10 and less than 30 "
+          options : {max: 200},
+          errorMessage: "Url should not be greater than 10 and less than 300 "
       }
     },
     title: {
-      notEmpty: {
-        errorMessage: "title should not be empty",
+      isEmpty: {
+        errorMessage: "title should not be isEmpty",
       },
     },
     price: {
-      notEmpty: {
-        errorMessage: "imageUrl should not be empty",
+      isEmpty: {
+        errorMessage: "imageUrl should not be isEmpty",
       }
     },
     date: {
-      notEmpty: {
-        errorMessage: "date should not be empty",
+      isEmpty: {
+        errorMessage: "date should not be isEmpty",
       },
       isDate: {
           errorMessage: "Date should be a date"
       }
     },
     location: {
-      notEmpty: {
-        errorMessage: "location should not be empty",
+      isEmpty: {
+        errorMessage: "location should not be isEmpty",
       },
     },
     company: {
-      notEmpty: {
-        errorMessage: "company name should not be empty",
+    isEmpty: {
+        errorMessage: "company name should not be isEmpty",
       },
     },
   };
