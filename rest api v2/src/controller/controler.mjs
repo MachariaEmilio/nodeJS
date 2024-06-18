@@ -5,6 +5,13 @@ export const getallevents = async (req, res) => {
   res.send(await prisma.events.findMany());
 };
 export const create_an_event = async (req, res) => {
+  const error_results = validationResult(req);
+  if (!error_results.isEmpty()) {
+    return res.send(error_results);
+  } else {
+ 
+ 
+ 
   const { body } = req;
   body.date = new Date(body.date);
   console.log(typeof body.date);
@@ -14,7 +21,7 @@ export const create_an_event = async (req, res) => {
       ...body,
     },
   });
-  res.send(new_data);
+  res.send(new_data);}
 };
 
 export const getbyid = async (req, res) => {
