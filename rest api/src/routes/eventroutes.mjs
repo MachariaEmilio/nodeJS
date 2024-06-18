@@ -1,26 +1,27 @@
-import express from "express";
+import { Router } from "express";
 import {
-  getallevents,
-  createanevent,
-  updateevent,
-  deletevent,
-  geteventbyid,
+  get_all_events,
+  create_an_event,
+  update_event,
+  delete_event,
+  get_event_by_id,
 } from "../controller/controller.mjs";
 
 import { key_schema } from "../utils/schema/schema.mjs";
 import { checkSchema } from "express-validator";
-import { userinfo } from "../utils/helper funtion/userdata.mjs";
-const router = express.Router();
+import { userinfo } from "../utils/helper function/userdata.mjs";
+const router = Router();
+
+router.route("/").get(get_all_events);
 
 router
   .route("/events")
-  .get(getallevents)
-  .post(checkSchema(key_schema), createanevent);
+  .post(checkSchema(key_schema), create_an_event);
 
 router
   .route("/events/:id")
-  .get(userinfo, geteventbyid)
-  .put(checkSchema(key_schema), userinfo, updateevent)
-  .delete(userinfo, deletevent);
+  .get(userinfo, get_event_by_id)
+  .put(checkSchema(key_schema), userinfo, update_event)
+  .delete(userinfo, delete_event);
 
 export default router;

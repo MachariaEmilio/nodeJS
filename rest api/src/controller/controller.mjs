@@ -1,21 +1,23 @@
 import { matchedData, validationResult } from "express-validator";
-import { readdata } from "../utils/database/database.mjs";
+import { read_data } from "../utils/database/database.mjs";
 import path from "node:path";
 import fs from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export const getallevents = (req, res) => {
+export const  get_all_events = async (req, res) => {
   res.status(200).json({
     status: "success",
-    data: res.send(readdata),
+    data: 
+    read_data
+
   });
 };
-export const geteventbyid = (req, res) => {
-  const { finduserid } = req;
-  res.send(readdata[finduserid]);
+export const get_event_by_id = (req, res) => {
+  const { find_user_id } = req;
+  res.send(read_data[find_user_id]);
 };
-export const createanevent = (req, res) => {
+export const create_an_event = (req, res) => {
   const error_results = validationResult(req);
   if (!error_results.isEmpty()) {
     return res.send(error_results);
@@ -23,37 +25,37 @@ export const createanevent = (req, res) => {
     const data = matchedData(req);
 
     const postData = {
-      id: readdata[readdata.length - 1].id + 1,
+      id: read_data[read_data.length - 1].id + 1,
       ...data,
     };
-    readdata.push(postData);
+    read_data.push(postData);
     fs.writeFile(
       path.join(__dirname, "../utils/database/eventsData.json"),
-      JSON.stringify(readdata)
+      JSON.stringify(read_data)
     );
 
     res.sendStatus(200).send(postData);
   }
 };
-export const updateevent = (req, res) => {
-  const { finduserid, body } = req;
-  readdata[finduserid] = { id: finduserid, ...body };
+export const update_event = (req, res) => {
+  const { find_user_id, body } = req;
+  read_data[find_user_id] = { id: find_user_id, ...body };
   fs.writeFile(
     path.join(__dirname, "../utils/database/eventsData.json"),
-    JSON.stringify(readdata)
+    JSON.stringify(read_data)
   );
 
   res.sendStatus(200);
 };
-export const deletevent = (req, res) => {
+export const delete_event = (req, res) => {
   const {
-    finduserid,
+    find_user_id,
     params: { id },
   } = req;
-  readdata.splice(finduserid, 1);
+  read_data.splice(find_user_id, 1);
   fs.writeFile(
     path.join(__dirname, "../utils/database/eventsData.json"),
-    JSON.stringify(readdata)
+    JSON.stringify(read_data)
   );
   res.send(`Event ${id} deleted successfully`);
 };
