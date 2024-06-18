@@ -1,7 +1,10 @@
 import { PrismaClient } from "@prisma/client";
+import { validationResult,matchedData} from "express-validator"
 const prisma = new PrismaClient();
 
-export const getallevents = async (req, res) => {
+export const get_all_events = async (req, res) => {
+
+
   res.send(await prisma.events.findMany());
 };
 export const create_an_event = async (req, res) => {
@@ -9,22 +12,22 @@ export const create_an_event = async (req, res) => {
   if (!error_results.isEmpty()) {
     return res.send(error_results);
   } else {
+ const data_s = matchedData(req)
  
  
- 
-  const { body } = req;
-  body.date = new Date(body.date);
-  console.log(typeof body.date);
+
+data_s.date = new Date(data_s.date);
+  console.log(typeof data_s.date);
 
   const new_data = await prisma.events.create({
     data: {
-      ...body,
+      ...data_s,
     },
   });
-  res.send(new_data);}
+  res.send(new_data);} 
 };
 
-export const getbyid = async (req, res) => {
+export const get_by_id = async (req, res) => {
   const {
     params: { id },
   } = req;
@@ -33,11 +36,11 @@ export const getbyid = async (req, res) => {
       id: parseInt(id),
     },
   });
-
+  
   res.send(user);
 };
 
-export const deletebyid = async (req, res) => {
+export const delete_by_id = async (req, res) => {
   const {
     params: { id },
   } = req;
@@ -46,11 +49,11 @@ export const deletebyid = async (req, res) => {
       id: parseInt(id),
     },
   });
-
+  
   res.send(user);
 };
 
-export const updateevent = async (req, res) => {
+export const update_event = async (req, res) => {
   const { params :{id},body } = req;
   if (body.date ) {
     body.date = new Date(body.date);
@@ -60,11 +63,13 @@ export const updateevent = async (req, res) => {
     data: {
       ...body,
     },
-
-
     where: {
       id: parseInt(id),
     },
   });
+  // if (updated_data ===null ){
+  //   res.status(404).send("user not found")
+  
+  // }
   res.send(updated_data);
 };
